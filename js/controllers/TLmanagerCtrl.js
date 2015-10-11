@@ -4,8 +4,7 @@ define(['app',
     '../directives/translationManager',
     '../services/langAPI'
     ], function (app) {
-  app.controller('TLmanagerCtrl', ['$scope', '$timeout', '$location', '$window', '$rootScope', 'langApi',
-    function ($scope, $timeout, $location, $window, $rootScope, langApi) {
+  app.controller('TLmanagerCtrl', ['$scope', 'langApi', function ($scope, langApi) {
 
         $scope.tlStateManager = true;
 

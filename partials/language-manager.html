@@ -2,24 +2,38 @@
     <thead>
         <tr>
             <td>#</td>
-            <td>Machine name</td>
+            <td ng-if="devModState">Machine name</td>
             <td>Button name</td>
             <td>Language</td>
             <td> <tl-switcher></tl-switcher> </td>
         </tr>
-        <tr class="addNewRow">
+        <tr class="addNewRow" ng-init="language={}">
             <td> <span class="badge"> {{languagesData.length+1}} </span> </td>
-            <td> <input class="form-control input-sm" type="text" ng-model="language.machineName" placeholder="Machine name"> </td>
-            <td> <input class="form-control input-sm" type="text" ng-model="language.btn" placeholder="Button name"> </td>
-            <td> <input class="form-control input-sm" type="text" ng-model="language.name" placeholder="Language name"> </td>
-            <td> <button type="button" class="btn btn-primary btn-sm pull-right" ng-click="lgRowActions.add(language)"><i class="glyphicon glyphicon-plus"></i> Add language</button> </td>
+            <td ng-if="devModState">
+                <input class="form-control input-sm" type="text" ng-model="language.machineName"
+                placeholder="Machine name">
+            </td>
+            <td>
+                <input class="form-control input-sm" type="text" ng-model="language.btnName"
+                placeholder="Button name">
+            </td>
+            <td>
+                <input class="form-control input-sm" type="text" ng-model="language.langName"
+                placeholder="Language name">
+            </td>
+            <td>
+                <button type="button" class="btn btn-primary btn-sm pull-right"
+                ng-click="lgRowActions.add(language); language={}" ng-disabled="!language.btnName">
+                <i class="glyphicon glyphicon-plus"></i> Add language
+                </button>
+            </td>
         </tr>
     </thead>
     <tbody>
         <tr ng-repeat="(k, row) in languagesData" ng-init="editState[row.uniqueID] = false">
             <td>{{k+1}}</td>
 
-            <td ng-switch="editState[row.uniqueID]">
+            <td ng-if="devModState" ng-switch="editState[row.uniqueID]">
                 <span ng-switch-default class="text">
                     {{row.machineName}}
                 </span>
@@ -30,19 +44,19 @@
 
             <td ng-switch="editState[row.uniqueID]">
                 <span ng-switch-default class="text">
-                    {{row.btn}}
+                    {{row.btnName}}
                 </span>
                 <span ng-switch-when="true">
-                    <input class="form-control input-sm" type="text" ng-model="row.btn">
+                    <input class="form-control input-sm" type="text" ng-model="row.btnName">
                 </span>
             </td>
 
             <td ng-switch="editState[row.uniqueID]">
                 <span ng-switch-default class="text">
-                    {{row.name}}
+                    {{row.langName}}
                 </span>
                 <span ng-switch-when="true">
-                    <input class="form-control input-sm" type="text" ng-model="row.name">
+                    <input class="form-control input-sm" type="text" ng-model="row.langName">
                 </span>
             </td>
 

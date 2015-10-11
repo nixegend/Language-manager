@@ -2,35 +2,36 @@
     <thead>
         <tr>
             <td>#</td>
-            <td>Machine name</td>
+            <td ng-if="devModState" >Machine name</td>
             <td ng-repeat="col in languagesData">
-                {{col.name}}
+                {{col.langName}}
             </td>
-            <td>
-                <tl-switcher></tl-switcher>
-<!--                 <button type="button" class="btn btn-success btn-sm pull-right" ng-click="saveChanges()">
-                    <i class="glyphicon glyphicon-floppy-save"></i> Save
-                </button> -->
-            </td>
+            <td> <tl-switcher></tl-switcher> </td>
         </tr>
-        <tr class="addNewRow" ng-if="devModState">
+        <tr class="addNewRow" ng-if="devModState" ng-init="translates={}">
             <td> <span class="badge"> {{translatesData.length+1}} </span></td>
-            <td><input class="form-control input-sm" type="text" ng-model="translates.machineName"
-            placeholder="Machine name"></td>
+            <td ng-if="devModState">
+                <input name="machineName" class="form-control input-sm" type="text"
+                ng-model="translates.machineName" placeholder="Machine name">
+            </td>
             <td ng-repeat="col in languagesData">
                 <input class="form-control input-sm" type="text" ng-model="translates[col.machineName]"
                 placeholder="Translate">
             </td>
-            <td><button type="button" class="btn btn-primary btn-sm pull-right"
-            ng-click="trRowActions.add(translates)">
-            <i class="glyphicon glyphicon-plus"></i> Add translate</button></td>
+            <td>
+                <button type="button" class="btn btn-primary btn-sm pull-right"
+                    ng-click="trRowActions.add(translates); translates={}"
+                    ng-disabled="!translates.machineName">
+                    <i class="glyphicon glyphicon-plus"></i> Add translate
+                </button>
+            </td>
         </tr>
     </thead>
     <tbody>
         <tr ng-repeat="(k, row) in translatesData" ng-init="editState[row.uniqueID] = false">
             <td>{{k+1}}</td>
 
-            <td ng-switch="editState[row.uniqueID]">
+            <td ng-if="devModState" ng-switch="editState[row.uniqueID]">
                 <span ng-switch-default class="text">
                     {{row.machineName}}
                 </span>

@@ -1,14 +1,16 @@
 [
   {
     "uniqueID":"or67gdfg7jlxv",
-    "name" : "English",
-    "btn" : "EN",
+    "langName" : "English",
+    "active" : true,
+    "btnName" : "EN",
     "machineName" : "eng"
   },
   {
     "uniqueID":"cbsfgb34s4fz",
-    "name" : "Russian",
-    "btn" : "RU",
+    "langName" : "Russian",
+    "active" : false,
+    "btnName" : "RU",
     "machineName" : "rus"
   }
 ]

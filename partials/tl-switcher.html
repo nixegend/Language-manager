@@ -12,9 +12,15 @@
 
     <ul class="dropdown-menu dropdown-menu-right">
         <li ng-repeat="lang in languagesData">
-            <a name="logout" ng-click="setLanguage(lang.machineName)"><i class="fa fa-globe"></i> {{lang.name}}</a>
+            <a name="logout" ng-click="activateLanguage(lang)">
+                <i ng-class="lang.active ? 'fa fa-check-square-o' : 'fa fa-square-o'"></i> {{lang.btnName}}
+            </a>
         </li>
-        <li><a name="devMod" ng-click="devMod(devModState)"><i class="fa fa-cog"></i> Dev mode</a></li>
+        <li>
+            <a name="devMod" ng-click="devMod(devModState)">
+                <i ng-class="devModState ? 'fa fa-eye-slash' : 'fa fa-eye'"></i> Dev mode
+            </a>
+        </li>
     </ul>
 
 </div>

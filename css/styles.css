@@ -26,6 +26,12 @@ body {
 #translationTable td:first-child {
   text-align: center;
   font-weight: bold;
+  width: 5%;
+}
+
+#languageTable td:last-child,
+#translationTable td:last-child {
+  width: 10%;
 }
 
 #languageTable thead td,
@@ -44,59 +50,88 @@ body {
 
 .langConfig .dropdown-menu a {
   cursor: pointer;
+  padding: 3px 7px;
 }
 
 #tlManager .btn-info {
   color: #000;
 }
 
-/*#tlManager .input-xs {
-  height: 22px;
-  padding: 1px 5px;
-  font-size: 12px;
-  line-height: 1.5;
-  border-radius: 3px;
+.dropdown-menu li {
+  border-bottom: 1px solid #ddd;
 }
-*/
-#tlManager .ng-enter,
-#tlManager .ng-leave {
+
+.dropdown-menu li:first-child {
+  border-top: 1px solid #ddd;
+}
+
+.dropdown-menu li a:hover {
+  color: #08c;
+}
+
+#tlManager table tbody tr:hover td {
+  -webkit-transition: 270ms linear all;
+  -moz-transition: 270ms linear all;
+  -ms-transition: 270ms linear all;
+  -o-transition: 270ms linear all;
+  transition: 270ms linear all;
+  background-color: #DEEEF7;
+  color: #000;
+}
+
+#tlManager table tbody:hover {
+  -webkit-transition: 270ms linear all;
+  -moz-transition: 270ms linear all;
+  -ms-transition: 270ms linear all;
+  -o-transition: 270ms linear all;
+  transition: 270ms linear all;
+  color: #828282;
+}
+
+#tlManager span.ng-leave,
+#tlManager span.ng-enter,
+#tlManager div.ng-enter,
+#tlManager div.ng-leave {
   -webkit-transition: 270ms linear all;
   -moz-transition: 270ms linear all;
   -ms-transition: 270ms linear all;
   -o-transition: 270ms linear all;
   transition: 270ms linear all;
   position: relative;
+  display: block;
 }
 
-#tlManager .ng-enter.ng-enter-active,
-#tlManager .ng-leave {
+#tlManager div.ng-enter.ng-enter-active,
+#tlManager div.ng-leave {
   opacity: 1;
   top: 0;
 }
 
-#tlManager .ng-leave.ng-leave-active,
-#tlManager .ng-enter {
+#tlManager div.ng-leave.ng-leave-active,
+#tlManager div.ng-enter {
   opacity: 0;
   top: -50px;
   height: 0;
 }
 
-#translationTable tbody tr td span.ng-enter.ng-enter-active,
-#translationTable tbody tr td span.ng-leave,
-#languageTable tbody tr td span.ng-enter.ng-enter-active,
-#languageTable tbody tr td span.ng-leave {
-  position: relative;
-  opacity: 1;
-  top: 0;
+#tlManager span.ng-leave.ng-leave-active,
+#tlManager span.ng-enter {
+    -webkit-transform: scaleY(0);
+    -moz-transform: scaleY(0);
+    -ms-transform: scaleY(0);
+    -o-transform: scaleY(0);
+    transform: scaleY(0);
+    height: 0;
+    opacity: 0;
 }
 
-#translationTable tbody tr td span.ng-leave.ng-leave-active,
-#translationTable tbody tr td span.ng-enter,
-#languageTable tbody tr td span.ng-leave.ng-leave-active,
-#languageTable tbody tr td span.ng-enter {
-  overflow: hidden;
-  position: absolute;
-  opacity: 0;
-  top: -47px;
-  height: 0;
+#tlManager span.ng-enter.ng-enter-active,
+#tlManager span.ng-leave {
+    -webkit-transform: scaleY(1);
+    -moz-transform: scaleY(1);
+    -ms-transform: scaleY(1);
+    -o-transform: scaleY(1);
+    transform: scaleY(1);
+    height: 30px;
+    opacity: 1;
 }
