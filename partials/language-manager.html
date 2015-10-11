@@ -1,0 +1,73 @@
+<table id="languageTable" class="table table-striped">
+    <thead>
+        <tr>
+            <td>#</td>
+            <td>Machine name</td>
+            <td>Button name</td>
+            <td>Language</td>
+            <td> <tl-switcher></tl-switcher> </td>
+        </tr>
+        <tr class="addNewRow">
+            <td> <span class="badge"> {{languagesData.length+1}} </span> </td>
+            <td> <input class="form-control input-sm" type="text" ng-model="language.machineName" placeholder="Machine name"> </td>
+            <td> <input class="form-control input-sm" type="text" ng-model="language.btn" placeholder="Button name"> </td>
+            <td> <input class="form-control input-sm" type="text" ng-model="language.name" placeholder="Language name"> </td>
+            <td> <button type="button" class="btn btn-primary btn-sm pull-right" ng-click="lgRowActions.add(language)"><i class="glyphicon glyphicon-plus"></i> Add language</button> </td>
+        </tr>
+    </thead>
+    <tbody>
+        <tr ng-repeat="(k, row) in languagesData" ng-init="editState[row.uniqueID] = false">
+            <td>{{k+1}}</td>
+
+            <td ng-switch="editState[row.uniqueID]">
+                <span ng-switch-default class="text">
+                    {{row.machineName}}
+                </span>
+                <span ng-switch-when="true">
+                    <input class="form-control input-sm" type="text" ng-model="row.machineName">
+                </span>
+            </td>
+
+            <td ng-switch="editState[row.uniqueID]">
+                <span ng-switch-default class="text">
+                    {{row.btn}}
+                </span>
+                <span ng-switch-when="true">
+                    <input class="form-control input-sm" type="text" ng-model="row.btn">
+                </span>
+            </td>
+
+            <td ng-switch="editState[row.uniqueID]">
+                <span ng-switch-default class="text">
+                    {{row.name}}
+                </span>
+                <span ng-switch-when="true">
+                    <input class="form-control input-sm" type="text" ng-model="row.name">
+                </span>
+            </td>
+
+            <td ng-switch="editState[row.uniqueID]">
+                <span ng-switch-default class="pull-right">
+                    <button type="button" class="btn btn-success btn-sm"
+                        ng-click="lgRowActions.edit(row, $index); editState[row.uniqueID] = true">
+                        <i class="glyphicon glyphicon-edit"></i> Edit
+                    </button>
+                    <button type="button" class="btn btn-danger btn-sm"
+                        ng-dblclick="lgRowActions.remove($index)">
+                        <i class="glyphicon glyphicon-trash"></i> Remove
+                    </button>
+                </span>
+                <span ng-switch-when="true" class="pull-right">
+                    <button type="button" class="btn btn-primary btn-sm"
+                        ng-click="lgRowActions.done(row, $index); editState[row.uniqueID] = false">
+                        <i class="glyphicon glyphicon-ok"></i> Done
+                    </button>
+                    <button type="button" class="btn btn-warning btn-sm"
+                        ng-click="lgRowActions.cancel(row, $index); editState[row.uniqueID] = false">
+                        <i class="glyphicon glyphicon-remove"></i> Cancel
+                    </button>
+                </span>
+            </td>
+        </tr>
+    </tbody>
+</table>

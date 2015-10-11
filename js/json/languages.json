@@ -1,0 +1,14 @@
+[
+  {
+    "uniqueID":"or67gdfg7jlxv",
+    "name" : "English",
+    "btn" : "EN",
+    "machineName" : "eng"
+  },
+  {
+    "uniqueID":"cbsfgb34s4fz",
+    "name" : "Russian",
+    "btn" : "RU",
+    "machineName" : "rus"
+  }
+]

@@ -1,0 +1,102 @@
+body {
+  padding: 20px;
+  background-color: #fff;
+}
+
+#languageTable,
+#languageTable td,
+#translationTable td,
+#translationTable {
+  border: 1px solid #ddd;
+  vertical-align: middle;
+  min-height: 47px;
+}
+
+#languageTable thead,
+#translationTable thead {
+  background-color: #E8E8E8;
+}
+
+#languageTable .addNewRow td,
+#translationTable .addNewRow td {
+  background-color: #649DFF;
+}
+
+#languageTable td:first-child,
+#translationTable td:first-child {
+  text-align: center;
+  font-weight: bold;
+}
+
+#languageTable thead td,
+#translationTable thead td {
+  font-weight: bold;
+}
+
+.addNewRow .badge {
+  background-color: #fff;
+  color: #000;
+}
+
+.langConfig  {
+  position: relative;
+}
+
+.langConfig .dropdown-menu a {
+  cursor: pointer;
+}
+
+#tlManager .btn-info {
+  color: #000;
+}
+
+/*#tlManager .input-xs {
+  height: 22px;
+  padding: 1px 5px;
+  font-size: 12px;
+  line-height: 1.5;
+  border-radius: 3px;
+}
+*/
+#tlManager .ng-enter,
+#tlManager .ng-leave {
+  -webkit-transition: 270ms linear all;
+  -moz-transition: 270ms linear all;
+  -ms-transition: 270ms linear all;
+  -o-transition: 270ms linear all;
+  transition: 270ms linear all;
+  position: relative;
+}
+
+#tlManager .ng-enter.ng-enter-active,
+#tlManager .ng-leave {
+  opacity: 1;
+  top: 0;
+}
+
+#tlManager .ng-leave.ng-leave-active,
+#tlManager .ng-enter {
+  opacity: 0;
+  top: -50px;
+  height: 0;
+}
+
+#translationTable tbody tr td span.ng-enter.ng-enter-active,
+#translationTable tbody tr td span.ng-leave,
+#languageTable tbody tr td span.ng-enter.ng-enter-active,
+#languageTable tbody tr td span.ng-leave {
+  position: relative;
+  opacity: 1;
+  top: 0;
+}
+
+#translationTable tbody tr td span.ng-leave.ng-leave-active,
+#translationTable tbody tr td span.ng-enter,
+#languageTable tbody tr td span.ng-leave.ng-leave-active,
+#languageTable tbody tr td span.ng-enter {
+  overflow: hidden;
+  position: absolute;
+  opacity: 0;
+  top: -47px;
+  height: 0;
+}
