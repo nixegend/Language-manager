@@ -1,0 +1,15 @@
+<div class="btn-group">
+    <label ng-repeat="obj in dataLanguages"
+            class="btn btn-primary" ng-click="setLanguage(obj.machineName)"
+           ng-model="radio.model" btn-radio="obj.machineName">
+        {{obj.btnName}}
+    </label>
+</div>
+
+<h1>{{t.qw}}</h1>
+     <br>
+<h2>{{t.as}}</h2>
+     <br>
+<h3>{{t.df}}</h3>
+     <br>
+<h4>{{t.cv}}</h4>
