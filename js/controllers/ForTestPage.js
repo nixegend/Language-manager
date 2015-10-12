@@ -3,15 +3,35 @@ define(['app', '../services/langAPI'], function (app) {
     function ($scope, langApi, localStorageService, $rootScope) {
 
         var defLang = 'eng';
+        var globLang = {};
         var langState = localStorageService.get('langState');
 
         $scope.langState = (langState === null) ? defLang : langState;
         $rootScope.t = {};
 
-        function createLangScope(arr, lang) {
-          var len = arr.length, i = 0;
-          for (i; i < len; i++) {
-            $rootScope.t[arr[i].machineName] = arr[i][lang];
+        function createLangScope(arr, lang, callback) {
+          var len = arr.length,
+              obj = {},
+              i = 0;
+
+            for (i; i < len; i++) {
+              obj[arr[i].machineName] = arr[i][lang];
+            }
+          callback(obj, lang, null);
+        };
+
+        function displayTranslations(obj, lang, arr) {
+          if (!globLang.hasOwnProperty(lang)) {
+
+            if (obj) {
+              globLang[lang] = obj;
+              $rootScope.t = obj;
+            } else {
+              createLangScope(arr, lang, displayTranslations);
+            }
+
+          } else {
+            $rootScope.t = globLang[lang];
           }
         };
 
@@ -21,7 +41,7 @@ define(['app', '../services/langAPI'], function (app) {
 
         langApi.getJSONresponse('translates').then(function(data) {
           $scope.dataTranslates = data;
-          createLangScope(data, $scope.langState);
+          displayTranslations(null, $scope.langState, data);
         });
 
         $scope.radio = {
@@ -29,7 +49,7 @@ define(['app', '../services/langAPI'], function (app) {
         };
 
         $scope.setLanguage = function(lang) {
-          createLangScope($scope.dataTranslates, lang);
+          displayTranslations(null, lang, $scope.dataTranslates);
           localStorageService.set('langState', lang);
         }
 
