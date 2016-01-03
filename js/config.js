@@ -1,21 +1,14 @@
 require.config({
 	paths: {
-		'ngLocalStorage': 	'../libs/angular-local-storage.min',
-		'uiBootstrap': 		'../libs/angular-bootstrap.min',
-		'ngResource': 		'../libs/angular-resource.min',
-		'ngAnimate': 		'../libs/angular-animate.min',
-		'bootstrap':		'../libs/bootstrap.min',
-		'ngRoute': 			'../libs/angular-route.min',
-		'uiRouter': 		'../libs/angular-ui-router.min',
-		'angular':			'../libs/angular.min',
-		'async':			'../libs/async.min',
-		'jquery' : 			'../libs/jquery.min',
-		'lodash' : 			'../libs/lodash.min'
+		'ngLocalStorage': 	'../bower_components/angular-local-storage/dist/angular-local-storage.min',
+		'uiBootstrap': 		'../bower_components/angular-bootstrap/ui-bootstrap-tpls.min',
+		'ngAnimate': 		'../bower_components/angular-animate/angular-animate.min',
+		'ngRoute': 			'../bower_components/angular-route/angular-route.min',
+		'bootstrap':		'../bower_components/bootstrap/dist/js/bootstrap.min',
+		'angular':			'../bower_components/angular/angular.min',
+		'jquery': 			'../bower_components/jquery/jquery.min'
 	},
 	shim: {
-		'lodash': {
-			exports: '_'
-		},
 		'angular': {
 			exports: 'angular'
 		},
@@ -28,16 +21,10 @@ require.config({
 		'bootstrap': {
 			deps: ['jquery']
 		},
-		'uiRouter': {
-			deps: ['angular']
-		},
 		'uiBootstrap': {
 			deps: ['angular']
 		},
 		'ngAnimate': {
-			deps: ['angular']
-		},
-		'ngResource': {
 			deps: ['angular']
 		}
 	}
