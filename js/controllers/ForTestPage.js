@@ -6,7 +6,7 @@ define(['app', '../services/langAPI'], function (app) {
         var globLang = {};
         var langState = localStorageService.get('langState');
 
-        $scope.langState = (langState === null) ? defLang : langState;
+        $scope.langState = langState ? langState : defLang;
         $rootScope.t = {};
 
         function createLangScope(arr, lang, callback) {
