@@ -4,7 +4,7 @@ define(['app'], function (app) {
 
         var devModval = localStorageService.get('devMod');
 
-        $scope.devModState = (devModval === null) ? false : devModval;
+        $scope.devModState = devModval ? devModval : false;
         $rootScope.tlStateManager = true;
 
         $scope.devMod = function(state) {
