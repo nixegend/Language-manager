@@ -1,9 +1,9 @@
 {
-  "name": "translation manager",
+  "name": "language manager",
   "authors": [
     "Anthony <nixegend@gmail.com>"
   ],
-  "description": "works with translation",
+  "description": "works with translations",
   "main": "index.html",
   "moduleType": [
     "amd",
@@ -12,6 +12,7 @@
   ],
   "keywords": [
     "translation",
+    "language",
     "manager"
   ],
   "license": "MIT",

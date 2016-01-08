@@ -1,0 +1,33 @@
+{
+  "name": "language_manager",
+  "version": "1.0.0",
+  "description": "language manager",
+  "main": "index.html",
+  "scripts": {
+    "test": "tests"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nixegend/Language-manager.git"
+  }, 
+  "keywords": [
+    "translation",
+    "language",
+    "manager",
+    "nodeJS",
+    "angular"
+  ],
+  "author": "Anton Panchenko",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/nixegend/Language-manager/issues"
+  },
+  "homepage": "https://github.com/nixegend/Language-manager#readme",
+  "devDependencies": {
+    "gulp": "^3.9.0",
+    "gulp-autoprefixer": "^3.1.0",
+    "gulp-minify-css": "^1.2.3",
+    "gulp-rename": "^1.2.2",
+    "gulp-sass": "^2.1.1"
+  }
+}

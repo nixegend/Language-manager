@@ -1,0 +1,64 @@
+.language-table,
+.translation-table {
+    border: 1px solid #ddd;
+
+  td {
+    border: 1px solid #ddd;
+    vertical-align: middle;
+    min-height: 47px;
+
+    &:first-child {
+      text-align: center;
+      font-weight: bold;
+      width: 5%;
+    }
+
+    &:last-child {
+      width: 170px;
+    }
+  }
+
+  > thead {
+    background-color: #E8E8E8;
+  }
+
+  > tbody tr,
+  > thead tr {
+    > td {
+      vertical-align: middle;
+    }
+  }
+
+  .add-new-row > td {
+    background-color: #649DFF;
+
+    .badge {
+      background-color: #fff;
+      color: #000;
+    }
+  }
+}
+
+
+.lang-config  {
+  position: relative;
+
+  .dropdown-menu {
+    li {
+        border-bottom: 1px solid #ddd;
+
+      a {
+        cursor: pointer;
+        padding: 3px 7px;
+
+        &:hover {
+          color: #08c;
+        }
+      }
+
+      &:first-child {
+        border-top: 1px solid #ddd;
+      }
+    }
+  }
+}

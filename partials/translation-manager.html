@@ -1,4 +1,4 @@
-<table id="translationTable" class="table table-striped">
+<table class="table table-striped translation-table">
     <thead>
         <tr>
             <td>#</td>
@@ -8,7 +8,7 @@
             </td>
             <td> <tl-switcher></tl-switcher> </td>
         </tr>
-        <tr class="addNewRow" ng-if="devModState" ng-init="translates={}">
+        <tr class="add-new-row" ng-if="devModState" ng-init="translates={}">
             <td> <span class="badge"> {{translatesData.length+1}} </span></td>
             <td ng-if="devModState">
                 <input name="machineName" class="form-control input-sm" type="text"

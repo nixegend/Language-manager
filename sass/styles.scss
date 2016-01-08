@@ -1,0 +1,13 @@
+body {
+  padding: 20px;
+  background-color: #fff;
+}
+
+*:focus {
+  outline: none;
+}
+
+@import "parts/variables";
+@import "parts/mixins";
+@import "parts/tl-manager";
+@import "parts/animations";
