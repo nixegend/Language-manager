@@ -14,10 +14,10 @@ define(['app'], function (app) {
           // console.log(row);
         },
         edit : function(row, index) {
-          oldValue[row.uniqueID] = angular.copy(row);
+          oldValue[row.machineName] = angular.copy(row);
         },
         cancel : function(row, index) {
-          $scope.translatesData[index] = oldValue[row.uniqueID];
+          $scope.translatesData[index] = oldValue[row.machineName];
         }
       };
 

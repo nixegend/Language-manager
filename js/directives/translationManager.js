@@ -5,7 +5,10 @@ define(['app', '../controllers/TranslationCtrl'], function (app) {
             restrict: 'E',
             replace: true,
             controller: 'TranslationCtrl',
-            templateUrl: '/partials/translation-manager.html'
+            templateUrl: '/partials/translation-manager.html',
+            link: function (scope, element, attr) {
+
+            }
         };
     }]);
 

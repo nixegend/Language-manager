@@ -1,10 +1,10 @@
-<table class="table table-striped language-table">
+<table class="table language-table">
     <thead>
         <tr>
             <td>#</td>
-            <td ng-if="devModState">Machine name</td>
-            <td>Button name</td>
-            <td>Language</td>
+            <td class="machine-name" ng-if="devModState">Machine name</td>
+            <td class="button-name">Button name</td>
+            <td class="language-name">Language</td>
             <td> <tl-switcher></tl-switcher> </td>
         </tr>
         <tr class="add-new-row" ng-init="language={}">
@@ -30,10 +30,10 @@
         </tr>
     </thead>
     <tbody>
-        <tr ng-repeat="(k, row) in languagesData" ng-init="editState[row.uniqueID] = false">
+        <tr ng-repeat="(k, row) in languagesData track by $index">
             <td>{{k+1}}</td>
 
-            <td ng-if="devModState" ng-switch="editState[row.uniqueID]">
+            <td class="machine-name" ng-if="devModState" ng-switch="row.edit">
                 <span ng-switch-default class="text">
                     {{row.machineName}}
                 </span>
@@ -42,7 +42,7 @@
                 </span>
             </td>
 
-            <td ng-switch="editState[row.uniqueID]">
+            <td class="button-name" ng-switch="row.edit">
                 <span ng-switch-default class="text">
                     {{row.btnName}}
                 </span>
@@ -51,7 +51,7 @@
                 </span>
             </td>
 
-            <td ng-switch="editState[row.uniqueID]">
+            <td class="language-name" ng-switch="row.edit">
                 <span ng-switch-default class="text">
                     {{row.langName}}
                 </span>
@@ -60,10 +60,10 @@
                 </span>
             </td>
 
-            <td ng-switch="editState[row.uniqueID]">
+            <td ng-switch="row.edit">
                 <span ng-switch-default class="pull-right">
                     <button type="button" class="btn btn-success btn-sm"
-                        ng-click="lgRowActions.edit(row, $index); editState[row.uniqueID] = true">
+                        ng-click="lgRowActions.edit(row, $index); row.edit = true">
                         <i class="glyphicon glyphicon-edit"></i> Edit
                     </button>
                     <button type="button" class="btn btn-danger btn-sm"
@@ -73,11 +73,11 @@
                 </span>
                 <span ng-switch-when="true" class="pull-right">
                     <button type="button" class="btn btn-primary btn-sm"
-                        ng-click="lgRowActions.done(row, $index); editState[row.uniqueID] = false">
+                        ng-click="lgRowActions.done(row, $index); row.edit = false">
                         <i class="glyphicon glyphicon-ok"></i> Done
                     </button>
                     <button type="button" class="btn btn-warning btn-sm"
-                        ng-click="lgRowActions.cancel(row, $index); editState[row.uniqueID] = false">
+                        ng-click="lgRowActions.cancel(row, $index); row.edit = false">
                         <i class="glyphicon glyphicon-remove"></i> Cancel
                     </button>
                 </span>

@@ -1,6 +1,5 @@
 body {
   padding: 20px;
-  background-color: #fff;
 }
 
 *:focus {
@@ -8,6 +7,5 @@ body {
 }
 
 @import "parts/variables";
-@import "parts/mixins";
 @import "parts/tl-manager";
 @import "parts/animations";

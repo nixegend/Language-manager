@@ -1,53 +1,84 @@
 .language-table,
 .translation-table {
-    border: 1px solid #ddd;
+  border: 1px solid $border-color;
 
   td {
-    border: 1px solid #ddd;
-    vertical-align: middle;
-    min-height: 47px;
+    min-height: $td-min-height;
 
     &:first-child {
       text-align: center;
       font-weight: bold;
-      width: 5%;
+      width: $first-td-width;
     }
 
     &:last-child {
-      width: 170px;
+      width: $last-td-width;
     }
   }
 
   > thead {
-    background-color: #E8E8E8;
-  }
+    background-color: $thead-bg;
 
-  > tbody tr,
-  > thead tr {
-    > td {
-      vertical-align: middle;
+    .add-new-row > td {
+      background-color: $row-add-new-row-bg;
+
+      .badge {
+        background-color: #fff;
+        color: #000;
+      }
     }
   }
 
-  .add-new-row > td {
-    background-color: #649DFF;
+  > tbody {
+    height: 100%;
+    overflow: auto;
 
-    .badge {
-      background-color: #fff;
-      color: #000;
+    > tr {
+      &:nth-child(odd) {
+        background-color: $tbody-tr-bg-odd;
+      }
+
+      &:nth-child(even) {
+        background-color: $tbody-tr-bg-even;
+      }
+
+      &:hover {
+        transition: 0.15s linear all;
+        background-color: $tbody-tr-hover;
+      }
     }
   }
+
+  > tbody,
+  > thead {
+    float: left;
+    width: 100%;
+
+    > tr {
+      width: 100%;
+      display: table;
+
+      > td {
+        border-top-color: $border-color;
+        vertical-align: middle;
+
+        &:not(:last-child) {
+          border-right: 1px solid $border-color;
+        }
+      }
+    }
+  }
+
 }
-
 
 .lang-config  {
   position: relative;
 
   .dropdown-menu {
-    li {
-        border-bottom: 1px solid #ddd;
+    > li {
+      border-bottom: 1px solid $dropdown-menu-border-color;
 
-      a {
+      > a {
         cursor: pointer;
         padding: 3px 7px;
 
@@ -57,7 +88,7 @@
       }
 
       &:first-child {
-        border-top: 1px solid #ddd;
+        border-top: 1px solid $dropdown-menu-border-color;
       }
     }
   }

@@ -1,10 +1,4 @@
 .tl-manager {
-
-  table tbody > tr:hover td {
-    transition: 0.15s linear all;
-    background-color: #DEEEF7;
-  }
-
   .animate {
     &.ng-enter,
     &.ng-leave {
@@ -26,5 +20,4 @@
       height: 0;
     }
   }
-
 }

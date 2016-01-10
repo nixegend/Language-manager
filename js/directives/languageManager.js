@@ -5,7 +5,10 @@ define(['app', '../controllers/LanguageCtrl'], function (app) {
             restrict: 'E',
             replace: true,
             controller: 'LanguageCtrl',
-            templateUrl: '/partials/language-manager.html'
+            templateUrl: '/partials/language-manager.html',
+            link: function (scope, element, attr) {
+
+            }
         };
     }]);
 

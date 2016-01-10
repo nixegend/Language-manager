@@ -1,2 +1,14 @@
-// $header-infobar-bg:          lighten($header-bg, 9%);
-// $tile-border:      darken($tile-box-bg, 7%);
+$row-add-new-row-bg: #649DFF;
+
+$thead-bg:           #E2E9FF;
+$border-color:       #ddd;
+
+$tbody-tr-bg-odd:    #fff;
+$tbody-tr-bg-even:     darken($tbody-tr-bg-odd, 2%);
+$tbody-tr-hover:       lighten($thead-bg, 2.5%);
+
+$dropdown-menu-border-color: $border-color;
+
+$first-td-width: 5%;
+$last-td-width:  170px;
+$td-min-height:  47px;
