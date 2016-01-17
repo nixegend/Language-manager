@@ -1,25 +1,15 @@
 define(['app'], function (app) {
-  app.controller('TLswitcherCtrl', ['$scope', '$rootScope', 'localStorageService',
-    function ($scope, $rootScope, localStorageService) {
+    app.controller('TLswitcherCtrl', ['$scope', '$rootScope', 'localStorageService',
+        function ($scope, $rootScope, localStorageService) {
 
-        var devModval = localStorageService.get('devMod');
+            $scope.devMod = function () {
+                $rootScope.lmSettings.devMod = !$rootScope.lmSettings.devMod;
+                localStorageService.set('lm', $rootScope.lmSettings);
+            };
 
-        $scope.devModState = devModval ? devModval : false;
-        $rootScope.tlStateManager = true;
+            $scope.activateLanguage = function (lang) {
+                lang.active = !lang.active;
+            };
 
-        $scope.devMod = function(state) {
-            $scope.devModState = !state;
-            localStorageService.set('devMod', !state);
-        };
-
-        $scope.activateLanguage = function(lang) {
-            lang.active = !lang.active;
-        }
-
-        $scope.switchTables = function(state) {
-            $rootScope.tlStateManager = !state;
-            $scope.$emit('tlStateManager', state);
-        };
-
-  }]);
+        }]);
 });

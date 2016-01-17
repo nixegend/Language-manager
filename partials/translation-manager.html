@@ -1,16 +1,16 @@
 <table class="table translation-table">
     <thead>
-        <tr>
+        <tr td-set-sizer>
             <td>#</td>
-            <td ng-if="devModState" >Machine name</td>
+            <td ng-if="lmSettings.devMod" >Machine name</td>
             <td ng-repeat="col in languagesData">
                 {{col.langName}}
             </td>
             <td> <tl-switcher></tl-switcher> </td>
         </tr>
-        <tr class="add-new-row" ng-if="devModState" ng-init="translates={}">
+        <tr class="add-new-row" ng-if="lmSettings.devMod" ng-init="translates={}" td-set-sizer>
             <td> <span class="badge"> {{translatesData.length+1}} </span></td>
-            <td ng-if="devModState">
+            <td ng-if="lmSettings.devMod">
                 <input name="machineName" class="form-control input-sm" type="text"
                 ng-model="translates.machineName" placeholder="Machine name">
             </td>
@@ -19,19 +19,19 @@
                 placeholder="Translate">
             </td>
             <td>
-                <button type="button" class="btn btn-primary btn-sm pull-right"
+                <button type="button" class="add-new-row-btn btn btn-primary btn-sm"
                     ng-click="trRowActions.add(translates); translates={}"
                     ng-disabled="!translates.machineName">
-                    <i class="glyphicon glyphicon-plus"></i> Add translate
+                    <i class="glyphicon glyphicon-plus"></i>
                 </button>
             </td>
         </tr>
     </thead>
     <tbody>
-        <tr ng-repeat="(k, row) in translatesData track by $index">
+        <tr ng-repeat="(k, row) in translatesData track by $index" td-set-sizer>
             <td>{{k+1}}</td>
 
-            <td ng-if="devModState" ng-switch="row.edit">
+            <td ng-if="lmSettings.devMod" ng-switch="row.edit">
                 <span ng-switch-default class="text">
                     {{row.machineName}}
                 </span>
@@ -50,26 +50,26 @@
             </td>
 
             <td ng-switch="row.edit">
-                <span ng-switch-default class="pull-right">
+                <div ng-switch-default>
                     <button type="button" class="btn btn-success btn-sm"
                         ng-click="trRowActions.edit(row, $index); row.edit = true">
-                        <i class="glyphicon glyphicon-edit"></i> Edit
+                        <i class="glyphicon glyphicon-edit"></i>
                     </button>
                     <button type="button" class="btn btn-danger btn-sm"
                         ng-dblclick="trRowActions.remove($index)">
-                        <i class="glyphicon glyphicon-trash"></i> Remove
+                        <i class="glyphicon glyphicon-trash"></i>
                     </button>
-                </span>
-                <span ng-switch-when="true" class="pull-right">
+                </div>
+                <div ng-switch-when="true">
                     <button type="button" class="btn btn-primary btn-sm"
                         ng-click="trRowActions.done(row, $index); row.edit = false">
-                        <i class="glyphicon glyphicon-ok"></i> Done
+                        <i class="glyphicon glyphicon-ok"></i>
                     </button>
                     <button type="button" class="btn btn-warning btn-sm"
                         ng-click="trRowActions.cancel(row, $index); row.edit = false">
-                        <i class="glyphicon glyphicon-remove"></i> Cancel
+                        <i class="glyphicon glyphicon-remove"></i>
                     </button>
-                </span>
+                </div>
             </td>
         </tr>
     </tbody>

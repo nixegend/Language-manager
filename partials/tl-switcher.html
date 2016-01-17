@@ -1,10 +1,7 @@
-<div class="lang-config pull-right" ng-switch="tlStateManager" uib-dropdown>
+<div class="lang-config" uib-dropdown>
 
-    <button type="button" ng-switch-when="false" ng-click="switchTables(true)" class="btn btn-primary btn-sm">
-        <i class="glyphicon glyphicon-list-alt"></i> Translations
-    </button>
-    <button type="button" ng-switch-when="true" ng-click="switchTables(false)" class="btn btn-primary btn-sm">
-        <i class="glyphicon glyphicon-list-alt"></i> Languages
+    <button type="button" ng-click="switchTables()" class="btn btn-primary btn-sm">
+        <i class="glyphicon glyphicon-{{lmSettings.tlState ? 'globe' : 'list-alt'}}"></i>
     </button>
 
     <button type="button" class="btn btn-info btn-sm dropdown-toggle" uib-dropdown-toggle>
@@ -13,12 +10,12 @@
     <ul class="dropdown-menu dropdown-menu-right">
         <li ng-repeat="lang in languagesData">
             <a name="logout" ng-click="activateLanguage(lang)">
-                <i ng-class="lang.active ? 'fa fa-check-square-o' : 'fa fa-square-o'"></i> {{lang.btnName}}
+                <i class="fa {{lang.active ? 'fa-check-square-o' : 'fa-square-o'}}"></i> {{lang.btnName}}
             </a>
         </li>
         <li>
-            <a name="devMod" ng-click="devMod(devModState)">
-                <i ng-class="devModState ? 'fa fa-eye-slash' : 'fa fa-eye'"></i> Dev mode
+            <a name="showHideDevMod" ng-click="devMod()">
+                <i class="fa {{lmSettings.devMod ? 'fa-eye-slash' : 'fa-eye'}}"></i> Dev mode
             </a>
         </li>
     </ul>

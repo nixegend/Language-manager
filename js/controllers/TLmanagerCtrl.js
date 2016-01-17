@@ -1,24 +1,37 @@
 define(['app',
-    '../directives/tlSwitcher',
-    '../directives/languageManager',
-    '../directives/translationManager',
-    '../services/langAPI'
-    ], function (app) {
-  app.controller('TLmanagerCtrl', ['$scope', 'langApi', function ($scope, langApi) {
+    '../directives/tl-switcher',
+    '../directives/td-set-sizer',
+    '../directives/language-manager',
+    '../directives/translation-manager',
+    '../services/API'
+], function (app) {
+    app.controller('TLmanagerCtrl', ['$scope', 'langApi', '$rootScope', 'localStorageService',
+        function ($scope, langApi, $rootScope, localStorageService) {
 
-        $scope.tlStateManager = true;
+            if (!localStorageService.get('lm')) {
+                var settings = {
+                    tlState: true,
+                    devMod: false
+                };
 
-        $scope.$on('tlStateManager', function (event, state) {
-          $scope.tlStateManager = state; // state from TLswitcherCtrl
-        });
+                localStorageService.set('lm', settings);
+                $rootScope.lmSettings = settings;
+            } else {
+                $rootScope.lmSettings = localStorageService.get('lm');
+            };
 
-        langApi.getJSONresponse('languages').then(function(data) {
-          $scope.languagesData = data;
-        });
+            $scope.switchTables = function () {
+                $rootScope.lmSettings.tlState = !$rootScope.lmSettings.tlState;
+                localStorageService.set('lm', $rootScope.lmSettings);
+            };
 
-        langApi.getJSONresponse('translates').then(function(data) {
-          $scope.translatesData = data;
-        });
+            langApi.getJSONresponse('languages').then(function (data) {
+                $scope.languagesData = data;
+            });
 
-  }]);
+            langApi.getJSONresponse('translates').then(function (data) {
+                $scope.translatesData = data;
+            });
+
+        }]);
 });
