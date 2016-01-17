@@ -1,4 +1,4 @@
-define(['app', '../services/API'], function (app) {
+define(['../app', '../services/API'], function (app) {
     app.controller('ForTestPage', ['$scope', 'langApi', 'localStorageService', '$rootScope',
         function ($scope, langApi, localStorageService, $rootScope) {
 

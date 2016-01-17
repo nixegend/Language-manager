@@ -9,7 +9,7 @@ define(['../app'], function (app) {
                 //     });
                 // }
 
-                // console.log(scope.$parent);
+                console.log(element);
 
             }
         }

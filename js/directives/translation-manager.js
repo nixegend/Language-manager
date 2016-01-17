@@ -1,4 +1,4 @@
-define(['app', '../controllers/TranslationCtrl'], function (app) {
+define(['../app', '../controllers/TranslationCtrl'], function (app) {
 
     app.directive('translationManager', [function () {
         return {

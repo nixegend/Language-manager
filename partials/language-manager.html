@@ -1,14 +1,14 @@
 <table class="table language-table">
     <thead>
         <tr td-set-sizer>
-            <td>#</td>
+            <td width="5%">#</td>
             <td class="machine-name" ng-if="lmSettings.devMod">Machine name</td>
             <td class="button-name">Button name</td>
             <td class="language-name">Language</td>
-            <td> <tl-switcher></tl-switcher> </td>
+            <td width="5%"> <tl-switcher></tl-switcher> </td>
         </tr>
         <tr class="add-new-row" ng-init="language={}" td-set-sizer>
-            <td> <span class="badge"> {{languagesData.length+1}} </span> </td>
+            <td width="5%"> <span class="badge"> {{languagesData.length+1}} </span> </td>
             <td ng-if="lmSettings.devMod">
                 <input class="form-control input-sm" type="text" ng-model="language.machineName"
                 placeholder="Machine name">
@@ -21,7 +21,7 @@
                 <input class="form-control input-sm" type="text" ng-model="language.langName"
                 placeholder="Language name">
             </td>
-            <td>
+            <td width="5%">
                 <button type="button" class="add-new-row-btn btn btn-primary btn-sm"
                 ng-click="lgRowActions.add(language); language={}" ng-disabled="!language.btnName">
                 <i class="glyphicon glyphicon-plus"></i>
@@ -31,7 +31,7 @@
     </thead>
     <tbody>
         <tr ng-repeat="(k, row) in languagesData track by $index" td-set-sizer>
-            <td>{{k+1}}</td>
+            <td width="5%">{{k+1}}</td>
 
             <td class="machine-name" ng-if="lmSettings.devMod" ng-switch="row.edit">
                 <span ng-switch-default class="text">
@@ -60,7 +60,7 @@
                 </span>
             </td>
 
-            <td ng-switch="row.edit">
+            <td ng-switch="row.edit" width="5%">
                 <div ng-switch-default>
                     <button type="button" class="btn btn-success btn-sm"
                         ng-click="lgRowActions.edit(row, $index); row.edit = true">

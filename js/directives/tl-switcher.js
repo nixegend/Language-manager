@@ -1,4 +1,4 @@
-define(['app', '../controllers/TLswitcherCtrl'], function (app) {
+define(['../app', '../controllers/TLswitcherCtrl'], function (app) {
 
     app.directive('tlSwitcher', [function () {
         return {

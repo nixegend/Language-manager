@@ -1,4 +1,4 @@
-define(['app'], function (app) {
+define(['../app'], function (app) {
     app.controller('LanguageCtrl', ['$scope', function ($scope) {
 
         var oldValue = {};

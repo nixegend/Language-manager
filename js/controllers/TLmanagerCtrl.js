@@ -1,4 +1,4 @@
-define(['app',
+define(['../app',
     '../directives/tl-switcher',
     '../directives/td-set-sizer',
     '../directives/language-manager',
@@ -19,6 +19,8 @@ define(['app',
             } else {
                 $rootScope.lmSettings = localStorageService.get('lm');
             };
+            
+            
 
             $scope.switchTables = function () {
                 $rootScope.lmSettings.tlState = !$rootScope.lmSettings.tlState;

@@ -1,4 +1,4 @@
-define(['app', '../controllers/LanguageCtrl'], function (app) {
+define(['../app', '../controllers/LanguageCtrl'], function (app) {
 
     app.directive('languageManager', [function () {
         return {
