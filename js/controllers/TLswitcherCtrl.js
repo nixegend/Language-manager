@@ -5,6 +5,7 @@ define(['../app'], function (app) {
             $scope.devMod = function () {
                 $rootScope.lmSettings.devMod = !$rootScope.lmSettings.devMod;
                 localStorageService.set('lm', $rootScope.lmSettings);
+                $rootScope.$emit('tdSizeWatcher');
             };
 
             $scope.activateLanguage = function (lang) {

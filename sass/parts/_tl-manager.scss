@@ -6,7 +6,12 @@
     min-height: $td-min-height;
 
     &:first-child {
+      width: $td-first-width;
       font-weight: bold;
+    }
+
+    &:last-child {
+      width: $td-last-width;
     }
 
     &:first-child,
@@ -71,7 +76,19 @@
       }
     }
   }
+}
 
+.language-table td {
+  &.machine-name,
+  &.machine-name + td,
+  &.machine-name + td + td {
+    width: 30%;
+  }
+
+  &:nth-child(2):not(.machine-name),
+  &:nth-child(2):not(.machine-name) + td {
+    width: 45%;
+  }
 }
 
 .lang-config  {

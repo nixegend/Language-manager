@@ -1,6 +1,5 @@
 define(['../app',
     '../directives/tl-switcher',
-    '../directives/td-set-sizer',
     '../directives/language-manager',
     '../directives/translation-manager',
     '../services/API'
@@ -19,8 +18,16 @@ define(['../app',
             } else {
                 $rootScope.lmSettings = localStorageService.get('lm');
             };
-            
-            
+
+            function getTdWidth(o) {
+                var propLength = langApi.getPropNums(o);
+                var tds = ($rootScope.lmSettings.devMod) ? propLength : propLength - 1;
+                return 90 / tds;
+            };
+
+            $rootScope.$on('tdSizeWatcher', function () {
+                $scope.tdWidth = getTdWidth($scope.translatesData[0]);
+            });
 
             $scope.switchTables = function () {
                 $rootScope.lmSettings.tlState = !$rootScope.lmSettings.tlState;
@@ -33,6 +40,7 @@ define(['../app',
 
             langApi.getJSONresponse('translates').then(function (data) {
                 $scope.translatesData = data;
+                $scope.tdWidth = getTdWidth(data[0]);
             });
 
         }]);
