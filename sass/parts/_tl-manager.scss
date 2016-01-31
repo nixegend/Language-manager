@@ -3,7 +3,8 @@
   border: 1px solid $border-color;
 
   td {
-    min-height: $td-min-height;
+    height: $td-height;
+    display: inline-block;
 
     &:first-child {
       width: $td-first-width;
@@ -17,6 +18,7 @@
     &:first-child,
     &:last-child {
       text-align: center;
+      vertical-align: middle;
     }
   }
 
@@ -28,6 +30,7 @@
 
       .badge {
         background-color: #fff;
+        margin: 7px 0;
         color: #000;
       }
 
@@ -65,10 +68,18 @@
     > tr {
       width: 100%;
       display: table;
+      border-bottom: 1px solid $border-color;
 
       > td {
-        border-top-color: $border-color;
-        vertical-align: middle;
+        border-top: 0;
+
+        > .text {
+          margin: 5px 0;
+          text-overflow: ellipsis;
+          overflow: hidden;
+          white-space: nowrap;
+          cursor: default;
+        }
 
         &:not(:last-child) {
           border-right: 1px solid $border-color;

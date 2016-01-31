@@ -1,15 +1,17 @@
 <table class="table translation-table">
     <thead>
         <tr>
-            <td>#</td>
-            <td ng-if="lmSettings.devMod" >Machine name</td>
+            <td><p class="text">#</p></td>
+            <td width="{{tdWidth}}%" ng-if="lmSettings.devMod">
+                <p class="text"> Machine name </p>
+            </td>
             <td width="{{tdWidth}}%" ng-repeat="col in languagesData">
-                {{col.langName}}
+                <p class="text"> {{col.langName}} </p>
             </td>
             <td> <tl-switcher></tl-switcher> </td>
         </tr>
         <tr class="add-new-row" ng-if="lmSettings.devMod" ng-init="translates={}">
-            <td> <span class="badge"> {{translatesData.length+1}} </span></td>
+            <td> <div class="badge"> {{translatesData.length+1}} </div></td>
             <td width="{{tdWidth}}%" ng-if="lmSettings.devMod">
                 <input name="machineName" class="form-control input-sm" type="text"
                 ng-model="translates.machineName" placeholder="Machine name">
@@ -29,24 +31,20 @@
     </thead>
     <tbody>
         <tr ng-repeat="(k, row) in translatesData track by $index">
-            <td>{{k+1}}</td>
+            <td><p class="text">{{k+1}}</p></td>
 
             <td width="{{tdWidth}}%" ng-if="lmSettings.devMod" ng-switch="row.edit">
-                <span ng-switch-default class="text">
+                <p ng-switch-default class="text" title="{{row.machineName}}">
                     {{row.machineName}}
-                </span>
-                <span ng-switch-when="true">
-                    <input class="form-control input-sm" type="text" ng-model="row.machineName">
-                </span>
+                </p>
+                <input ng-switch-when="true" class="form-control input-sm" type="text" ng-model="row.machineName">
             </td>
 
             <td width="{{tdWidth}}%" ng-repeat="(j, col) in languagesData" ng-switch="row.edit">
-                <span ng-switch-default class="text">
+                <p ng-switch-default class="text" title="{{row[languagesData[j].machineName]}}">
                     {{row[languagesData[j].machineName]}}
-                </span>
-                <span ng-switch-when="true">
-                    <input class="form-control input-sm" type="text" ng-model="row[languagesData[j].machineName]">
-                </span>
+                </p>
+                <input ng-switch-when="true" class="form-control input-sm" type="text" ng-model="row[languagesData[j].machineName]">
             </td>
 
             <td ng-switch="row.edit">

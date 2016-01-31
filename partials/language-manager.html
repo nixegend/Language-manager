@@ -1,14 +1,14 @@
 <table class="table language-table">
     <thead>
         <tr>
-            <td>#</td>
-            <td class="machine-name" ng-if="lmSettings.devMod">Machine name</td>
-            <td>Button name</td>
-            <td>Language</td>
+            <td><p class="text">#</p></td>
+            <td class="machine-name" ng-if="lmSettings.devMod"><p class="text">Machine name</p></td>
+            <td><p class="text">Button name</p></td>
+            <td><p class="text">Language</p></td>
             <td> <tl-switcher></tl-switcher> </td>
         </tr>
         <tr class="add-new-row" ng-init="language={}">
-            <td> <span class="badge"> {{languagesData.length+1}} </span> </td>
+            <td> <div class="badge"> {{languagesData.length+1}} </div> </td>
             <td class="machine-name" ng-if="lmSettings.devMod">
                 <input class="form-control input-sm" type="text" ng-model="language.machineName"
                 placeholder="Machine name">
@@ -31,33 +31,27 @@
     </thead>
     <tbody>
         <tr ng-repeat="(k, row) in languagesData track by $index">
-            <td>{{k+1}}</td>
+            <td><p class="text">{{k+1}}</p></td>
 
             <td class="machine-name" ng-if="lmSettings.devMod" ng-switch="row.edit">
-                <span ng-switch-default class="text">
+                <p ng-switch-default class="text" title="{{row.machineName}}">
                     {{row.machineName}}
-                </span>
-                <span ng-switch-when="true">
-                    <input class="form-control input-sm" type="text" ng-model="row.machineName">
-                </span>
+                </p>
+                <input ng-switch-when="true" class="form-control input-sm" type="text" ng-model="row.machineName">
             </td>
 
             <td ng-switch="row.edit">
-                <span ng-switch-default class="text">
+                <p ng-switch-default class="text" title="{{row.btnName}}">
                     {{row.btnName}}
-                </span>
-                <span ng-switch-when="true">
-                    <input class="form-control input-sm" type="text" ng-model="row.btnName">
-                </span>
+                </p>
+                <input ng-switch-when="true" class="form-control input-sm" type="text" ng-model="row.btnName">
             </td>
 
             <td ng-switch="row.edit">
-                <span ng-switch-default class="text">
+                <p ng-switch-default class="text" title="{{row.langName}}">
                     {{row.langName}}
-                </span>
-                <span ng-switch-when="true">
-                    <input class="form-control input-sm" type="text" ng-model="row.langName">
-                </span>
+                </p>
+                <input ng-switch-when="true" class="form-control input-sm" type="text" ng-model="row.langName">
             </td>
 
             <td ng-switch="row.edit">
