@@ -2,31 +2,51 @@
 .translation-table {
   border: 1px solid $border-color;
 
-  td {
-    height: $td-height;
-    display: inline-block;
+  .tr {
+     display: table;
+     width: 100%;
+     table-layout: fixed;
+     border-bottom: 1px solid $border-color;
+  }
 
-    &:first-child {
-      font-weight: bold;
-    }
+  .td {
+     display: table-cell;
+     height: $td-height;
+     vertical-align: middle;
+     padding: 5px;
 
-    &:first-child,
-    &:last-child {
-      text-align: center;
-      vertical-align: middle;
+     &:first-child {
+       width: 100px;
+       font-weight: bold;
+       text-align: center;
+       cursor: default;
+     }
+
+     &:last-child {
+       text-align: center;
+       width: 82px;
+     }
+
+    &:not(:last-child) {
+      border-right: 1px solid $border-color;
     }
   }
 
-  > thead {
+  .text {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    cursor: default;
+  }
+
+  .thead {
     background-color: $thead-bg;
 
-    .add-new-row > td {
+    .add-new-row {
       background-color: $row-add-new-row-bg;
 
       .badge {
         background-color: #fff;
-        margin: 7px 0;
-        cursor: pointer;
         color: #000;
       }
 
@@ -36,11 +56,8 @@
     }
   }
 
-  > tbody {
-    height: 100%;
-    overflow: auto;
-
-    > tr {
+  .tbody {
+    > .tr {
       &:nth-child(odd) {
         background-color: $tbody-tr-bg-odd;
       }
@@ -52,34 +69,6 @@
       &:hover {
         transition: 0.15s linear all;
         background-color: $tbody-tr-hover;
-      }
-    }
-  }
-
-  > tbody,
-  > thead {
-    float: left;
-    width: 100%;
-
-    > tr {
-      width: 100%;
-      display: table;
-      border-bottom: 1px solid $border-color;
-
-      > td {
-        border-top: 0;
-
-        > .text {
-          margin: 5px 0;
-          text-overflow: ellipsis;
-          overflow: hidden;
-          white-space: nowrap;
-          cursor: default;
-        }
-
-        &:not(:last-child) {
-          border-right: 1px solid $border-color;
-        }
       }
     }
   }

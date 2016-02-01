@@ -1,83 +1,85 @@
-<table class="table language-table">
-    <thead>
-        <tr>
-            <td><p class="text">#</p></td>
-            <td class="machine-name" ng-if="lmSettings.devMod">
-                <p class="text">Machine name</p>
-            </td>
-            <td><p class="text">Button name</p></td>
-            <td><p class="text">Language</p></td>
-            <td> <tl-switcher></tl-switcher> </td>
-        </tr>
-        <tr class="add-new-row" ng-init="language={}">
-            <td> <div class="badge"> {{languagesData.length+1}} </div> </td>
-            <td class="machine-name" ng-if="lmSettings.devMod">
-                <input class="form-control input-sm" type="text" ng-model="language.machineName"
-                placeholder="Machine name">
-            </td>
-            <td>
-                <input class="form-control input-sm" type="text" ng-model="language.btnName"
-                placeholder="Button name">
-            </td>
-            <td>
-                <input class="form-control input-sm" type="text" ng-model="language.langName"
-                placeholder="Language name">
-            </td>
-            <td>
-                <button type="button" class="add-new-row-btn btn btn-primary btn-sm"
-                ng-click="lgRowActions.add(language); language={}" ng-disabled="!language.btnName">
-                <i class="glyphicon glyphicon-plus"></i>
+<div class="language-table">
+
+    <div class="thead">
+        <div class="tr">
+            <div class="td"> # </div>
+            <div class="td text" ng-if="lmSettings.devMod"> Machine name </div>
+            <div class="td text"> Button name </div>
+            <div class="td text"> Language </div>
+            <div class="td">
+                <tl-switcher></tl-switcher>
+            </div>
+        </div>
+
+        <div class="tr add-new-row" ng-init="language={}">
+            <div class="td">
+                <span class="badge"> {{languagesData.length+1}} </span>
+            </div>
+
+            <div class="td" ng-if="lmSettings.devMod">
+                <input class="form-control input-sm" type="text" ng-model="language.machineName" placeholder="Machine name">
+            </div>
+
+            <div class="td">
+                <input class="form-control input-sm" type="text" ng-model="language.btnName" placeholder="Button name">
+            </div>
+
+            <div class="td">
+                <input class="form-control input-sm" type="text" ng-model="language.langName" placeholder="Language name">
+            </div>
+
+            <div class="td">
+                <button type="button" class="add-new-row-btn btn btn-primary btn-sm" ng-click="lgRowActions.add(language); language={}" ng-disabled="!language.btnName">
+                    <i class="glyphicon glyphicon-plus"></i>
                 </button>
-            </td>
-        </tr>
-    </thead>
-    <tbody>
-        <tr ng-repeat="(k, row) in languagesData track by $index">
-            <td><p class="text">{{k+1}}</p></td>
+            </div>
+        </div>
+    </div>
 
-            <td class="machine-name" ng-if="lmSettings.devMod" ng-switch="row.edit">
-                <p ng-switch-default class="text" title="{{row.machineName}}">
-                    {{row.machineName}}
-                </p>
+    <div class="tbody">
+        <div class="tr" ng-repeat="(k, row) in languagesData track by $index">
+            <div class="td"> {{k+1}} </div>
+
+            <div class="td text" ng-if="lmSettings.devMod" ng-switch="row.edit">
+                <span ng-switch-default title="{{row.machineName}}">
+                   {{row.machineName}}
+                </span>
                 <input ng-switch-when="true" class="form-control input-sm" type="text" ng-model="row.machineName">
-            </td>
+            </div>
 
-            <td ng-switch="row.edit">
-                <p ng-switch-default class="text" title="{{row.btnName}}">
-                    {{row.btnName}}
-                </p>
+            <div class="td text" ng-switch="row.edit">
+                <span ng-switch-default title="{{row.btnName}}">
+                   {{row.btnName}}
+                </span>
                 <input ng-switch-when="true" class="form-control input-sm" type="text" ng-model="row.btnName">
-            </td>
+            </div>
 
-            <td ng-switch="row.edit">
-                <p ng-switch-default class="text" title="{{row.langName}}">
-                    {{row.langName}}
-                </p>
+            <div class="td text" ng-switch="row.edit">
+                <span ng-switch-default title="{{row.langName}}">
+                   {{row.langName}}
+                </span>
                 <input ng-switch-when="true" class="form-control input-sm" type="text" ng-model="row.langName">
-            </td>
+            </div>
 
-            <td ng-switch="row.edit">
+            <div class="td" ng-switch="row.edit">
                 <div ng-switch-default>
-                    <button type="button" class="btn btn-success btn-sm"
-                        ng-click="lgRowActions.edit(row, $index); row.edit = true">
+                    <button type="button" class="btn btn-success btn-sm" ng-click="lgRowActions.edit(row, $index); row.edit = true">
                         <i class="glyphicon glyphicon-edit"></i>
                     </button>
-                    <button type="button" class="btn btn-danger btn-sm"
-                        ng-dblclick="lgRowActions.remove($index)">
+                    <button type="button" class="btn btn-danger btn-sm" ng-dblclick="lgRowActions.remove($index)">
                         <i class="glyphicon glyphicon-trash"></i>
                     </button>
                 </div>
                 <div ng-switch-when="true">
-                    <button type="button" class="btn btn-primary btn-sm"
-                        ng-click="lgRowActions.done(row, $index); row.edit = false">
+                    <button type="button" class="btn btn-primary btn-sm" ng-click="lgRowActions.done(row, $index); row.edit = false">
                         <i class="glyphicon glyphicon-ok"></i>
                     </button>
-                    <button type="button" class="btn btn-warning btn-sm"
-                        ng-click="lgRowActions.cancel(row, $index); row.edit = false">
+                    <button type="button" class="btn btn-warning btn-sm" ng-click="lgRowActions.cancel(row, $index); row.edit = false">
                         <i class="glyphicon glyphicon-remove"></i>
                     </button>
                 </div>
-            </td>
-        </tr>
-    </tbody>
-</table>
+            </div>
+        </div>
+    </div>
+
+</div>

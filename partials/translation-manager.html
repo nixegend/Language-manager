@@ -1,74 +1,74 @@
-<table class="table translation-table">
-    <thead>
-        <tr>
-            <td><p class="text">#</p></td>
-            <td width="{{tdWidth}}%" ng-if="lmSettings.devMod">
-                <p class="text"> Machine name </p>
-            </td>
-            <td width="{{tdWidth}}%" ng-repeat="col in languagesData">
-                <p class="text"> {{col.langName}} </p>
-            </td>
-            <td> <tl-switcher></tl-switcher> </td>
-        </tr>
-        <tr class="add-new-row" ng-if="lmSettings.devMod" ng-init="translates={}">
-            <td> <div class="badge"> {{translatesData.length+1}} </div></td>
-            <td width="{{tdWidth}}%" ng-if="lmSettings.devMod">
-                <input name="machineName" class="form-control input-sm" type="text"
-                ng-model="translates.machineName" placeholder="Machine name">
-            </td>
-            <td width="{{tdWidth}}%" ng-repeat="col in languagesData">
-                <input class="form-control input-sm" type="text" ng-model="translates[col.machineName]"
-                placeholder="Translate">
-            </td>
-            <td>
-                <button type="button" class="add-new-row-btn btn btn-primary btn-sm"
-                    ng-click="trRowActions.add(translates); translates={}"
-                    ng-disabled="!translates.machineName">
+<div class="translation-table">
+
+    <div class="thead">
+        <div class="tr">
+            <div class="td"> # </div>
+            <div class="td text" ng-if="lmSettings.devMod"> Machine name </div>
+            <div class="td text" ng-repeat="col in languagesData"> {{col.langName}} </div>
+            <div class="td">
+                <tl-switcher></tl-switcher>
+            </div>
+        </div>
+
+        <div class="tr add-new-row" ng-if="lmSettings.devMod" ng-init="translates={}">
+            <div class="td">
+                <span class="badge"> {{translatesData.length+1}} </span>
+            </div>
+
+            <div class="td" ng-if="lmSettings.devMod">
+                <input name="machineName" class="form-control input-sm" type="text" ng-model="translates.machineName" placeholder="Machine name">
+            </div>
+
+            <div class="td" ng-repeat="col in languagesData">
+                <input class="form-control input-sm" type="text" ng-model="translates[col.machineName]" placeholder="Translate">
+            </div>
+
+            <div class="td">
+                <button type="button" class="add-new-row-btn btn btn-primary btn-sm" ng-click="trRowActions.add(translates); translates={}"
+                ng-disabled="!translates.machineName">
                     <i class="glyphicon glyphicon-plus"></i>
                 </button>
-            </td>
-        </tr>
-    </thead>
-    <tbody>
-        <tr ng-repeat="(k, row) in translatesData track by $index">
-            <td><p class="text">{{k+1}}</p></td>
+            </div>
+        </div>
+    </div>
 
-            <td width="{{tdWidth}}%" ng-if="lmSettings.devMod" ng-switch="row.edit">
-                <p ng-switch-default class="text" title="{{row.machineName}}">
-                    {{row.machineName}}
-                </p>
+    <div class="tbody">
+        <div class="tr" ng-repeat="(k, row) in translatesData track by $index">
+            <div class="td"> {{k+1}} </div>
+
+            <div class="td text" ng-if="lmSettings.devMod" ng-switch="row.edit">
+                <span ng-switch-default title="{{row.machineName}}">
+                   {{row.machineName}}
+                </span>
                 <input ng-switch-when="true" class="form-control input-sm" type="text" ng-model="row.machineName">
-            </td>
+            </div>
 
-            <td width="{{tdWidth}}%" ng-repeat="(j, col) in languagesData" ng-switch="row.edit">
-                <p ng-switch-default class="text" title="{{row[languagesData[j].machineName]}}">
-                    {{row[languagesData[j].machineName]}}
-                </p>
+            <div class="td text" ng-repeat="(j, col) in languagesData" ng-switch="row.edit">
+                <span ng-switch-default title="{{row[languagesData[j].machineName]}}">
+                   {{row[languagesData[j].machineName]}}
+                </span>
                 <input ng-switch-when="true" class="form-control input-sm" type="text" ng-model="row[languagesData[j].machineName]">
-            </td>
+            </div>
 
-            <td ng-switch="row.edit">
+            <div class="td" ng-switch="row.edit">
                 <div ng-switch-default>
-                    <button type="button" class="btn btn-success btn-sm"
-                        ng-click="trRowActions.edit(row, $index); row.edit = true">
+                    <button type="button" class="btn btn-success btn-sm" ng-click="trRowActions.edit(row, $index); row.edit = true">
                         <i class="glyphicon glyphicon-edit"></i>
                     </button>
-                    <button type="button" class="btn btn-danger btn-sm"
-                        ng-dblclick="trRowActions.remove($index)">
+                    <button type="button" class="btn btn-danger btn-sm" ng-dblclick="trRowActions.remove($index)">
                         <i class="glyphicon glyphicon-trash"></i>
                     </button>
                 </div>
                 <div ng-switch-when="true">
-                    <button type="button" class="btn btn-primary btn-sm"
-                        ng-click="trRowActions.done(row, $index); row.edit = false">
+                    <button type="button" class="btn btn-primary btn-sm" ng-click="trRowActions.done(row, $index); row.edit = false">
                         <i class="glyphicon glyphicon-ok"></i>
                     </button>
-                    <button type="button" class="btn btn-warning btn-sm"
-                        ng-click="trRowActions.cancel(row, $index); row.edit = false">
+                    <button type="button" class="btn btn-warning btn-sm" ng-click="trRowActions.cancel(row, $index); row.edit = false">
                         <i class="glyphicon glyphicon-remove"></i>
                     </button>
                 </div>
-            </td>
-        </tr>
-    </tbody>
-</table>
+            </div>
+        </div>
+    </div>
+
+</div>
