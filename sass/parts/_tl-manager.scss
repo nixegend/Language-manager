@@ -7,12 +7,7 @@
     display: inline-block;
 
     &:first-child {
-      width: $td-first-width;
       font-weight: bold;
-    }
-
-    &:last-child {
-      width: $td-last-width;
     }
 
     &:first-child,
@@ -31,6 +26,7 @@
       .badge {
         background-color: #fff;
         margin: 7px 0;
+        cursor: pointer;
         color: #000;
       }
 
@@ -86,19 +82,6 @@
         }
       }
     }
-  }
-}
-
-.language-table td {
-  &.machine-name,
-  &.machine-name + td,
-  &.machine-name + td + td {
-    width: 30%;
-  }
-
-  &:nth-child(2):not(.machine-name),
-  &:nth-child(2):not(.machine-name) + td {
-    width: 45%;
   }
 }
 
